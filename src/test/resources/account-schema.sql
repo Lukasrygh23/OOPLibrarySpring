@@ -1,0 +1,7 @@
+DROP TABLE IF EXISTS `book` CASCADE;
+CREATE TABLE `book` 
+(
+	`book_id` BIGINT PRIMARY KEY AUTO_INCREMENT,
+	`book_name` VARCHAR(255) NOT NULL,
+	`author_name` VARCHAR(255)
+);
