@@ -64,9 +64,9 @@ public class LicenseControllerIntegrationTests {
 	}
 	
 	@Test
-	void testGet() throws Exception {
+	void testGetOne() throws Exception {
 		Book testBook = new Book(1L, "big book of tests", "GLADOS");
-		Date testDate = new Date(120, 1, 20);
+		Date testDate = new Date(122, 0, 20);
 		tLicense testLicense = new tLicense("Chell", testDate, testBook);
 		String testLicenseAsJSON = this.mapper.writeValueAsString(testLicense);
 		RequestBuilder request = get("/license/get/1");
