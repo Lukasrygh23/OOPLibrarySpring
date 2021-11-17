@@ -1,10 +1,12 @@
 package com.qa.LukasSpring.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
 import com.qa.LukasSpring.domain.Book;
+import com.qa.LukasSpring.exceptions.BookNotFoundException;
 import com.qa.LukasSpring.repo.BookRepo;
 
 @Service
@@ -30,19 +32,26 @@ public class BookService {
 	
 	public Book getOne(Long id) {
 		
-		//TODO add custom exception
-		return this.repo.findById(id).orElseThrow();
+		return this.repo.findById(id).orElseThrow(BookNotFoundException::new);
 	}
 	
 	public Book update(Long id, Book book) {
 		
-		return this.repo.saveAndFlush(null);
+		Optional<Book> currentOptional = this.repo.findById(id);
+		Book current = currentOptional.get();
+		
+		current.setBookName(book.getBookName());
+		current.setAuthorName(book.getAuthorName());
+		
+		return this.repo.saveAndFlush(current);
 	}
 	
 	public boolean delete(Long id) {
 		
-		
-		return false;
+		this.repo.deleteById(id);
+		boolean exists = this.repo.existsById(id);
+		//This should return false if it doesn't exist, so we invert it.
+		return !exists;
 	}
 	
 }
