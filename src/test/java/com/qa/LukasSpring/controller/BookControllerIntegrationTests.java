@@ -73,7 +73,7 @@ public class BookControllerIntegrationTests {
 		
 		this.mvc.perform(request).andExpect(checkStatus).andExpect(checkBody);
 		
-	}
+	} 
 	
 	@Test
 	void testGetAll() throws Exception {
@@ -95,7 +95,7 @@ public class BookControllerIntegrationTests {
 			
 		ResultMatcher checkStatus = status().isAccepted();
 		
-		Book bookSaved = new Book(1L, "Trolleys and Portals", "GLADOS");
+		Book bookSaved = new Book(1L, "Trolleys and Portals", "GLADOS"); 
 		String bookSavedAsJSON = this.mapper.writeValueAsString(bookSaved);
 		
 		ResultMatcher checkBody = content().json(bookSavedAsJSON);

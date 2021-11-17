@@ -33,5 +33,8 @@ public class LicenseController {
 	public ResponseEntity<List<tLicense>> getAll() {
 		return new ResponseEntity<List<tLicense>>(this.service.getAll(), HttpStatus.OK);
 	}
-
+	
+	
+	@GetMapping("")
+	
 }
