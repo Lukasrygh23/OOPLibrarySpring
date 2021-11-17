@@ -65,7 +65,7 @@ public class BookControllerIntegrationTests {
 	void testGet() throws Exception {
 		Book testGLADOS = new Book(1L, "big book of tests", "GLADOS");
 		String testGLADOSAsJSON = this.mapper.writeValueAsString(testGLADOS);
-		RequestBuilder request = get("/user/getBook/1");
+		RequestBuilder request = get("/book/getBook/1");
 		
 		ResultMatcher checkStatus = status().isOk();
 		
