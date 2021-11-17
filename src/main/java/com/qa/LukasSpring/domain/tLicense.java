@@ -1,6 +1,7 @@
 package com.qa.LukasSpring.domain;
 
 import java.sql.Date;
+import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,42 +12,47 @@ import javax.persistence.ManyToOne;
 
 @Entity
 public class tLicense {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long licenseId;
-	
+
 	@Column(name = "recipient_username")
 	private String recipientUsername;
-	
+
 	@Column(name = "return_date")
 	private Date returnDate;
-	
+
 	@ManyToOne
 	private Book book;
-	
-	public tLicense() {}
+
+	public tLicense() {
+	}
 
 	/**
 	 * @param recipientUsername
 	 * @param returnDate
 	 */
-	public tLicense(String recipientUsername, Date returnDate) {
+	public tLicense(String recipientUsername, Date returnDate, Book book) {
 		super();
 		this.recipientUsername = recipientUsername;
 		this.returnDate = returnDate;
+		this.book = book;
 	}
 
 	/**
 	 * @param licenseId
 	 * @param recipientUsername
 	 * @param returnDate
+	 * @param book
 	 */
-	public tLicense(Long licenseId, String recipientUsername, Date returnDate) {
+
+	public tLicense(Long licenseId, String recipientUsername, Date returnDate, Book book) {
 		super();
 		this.licenseId = licenseId;
 		this.recipientUsername = recipientUsername;
 		this.returnDate = returnDate;
+		this.book = book;
 	}
 
 	public Long getLicenseId() {
@@ -72,20 +78,23 @@ public class tLicense {
 	public void setReturnDate(Date returnDate) {
 		this.returnDate = returnDate;
 	}
-	
+
+	public Book getBook() {
+		return this.book;
+	}
+
+	public void setBook(Book book) {
+		this.book = book;
+	}
+
 	@Override
 	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((licenseId == null) ? 0 : licenseId.hashCode());
-		result = prime * result + ((recipientUsername == null) ? 0 : recipientUsername.hashCode());
-		result = prime * result + ((returnDate == null) ? 0 : returnDate.hashCode());
-		
-		return result;
+		return Objects.hash(licenseId, recipientUsername, returnDate, book);
 	}
-	
+
 	@Override
 	public boolean equals(Object obj) {
+
 		if (this == obj)
 			return true;
 		if (obj == null)
@@ -93,22 +102,10 @@ public class tLicense {
 		if (getClass() != obj.getClass())
 			return false;
 		tLicense other = (tLicense) obj;
-		
 
-		if (licenseId != other.licenseId)
-			return false;
-		
-		if (recipientUsername == null ) {
-			if (other.recipientUsername != null)
-				return false;
-		} else if (!recipientUsername.equals(other.recipientUsername))
-			return false;
-		if (returnDate == null) {
-			if (other.returnDate != null)
-				return false;
-		} else if(!returnDate.equals(other.returnDate))
-			return false;
-		
-		return true;}
+		return Objects.equals(licenseId, other.licenseId) && Objects.equals(recipientUsername, other.recipientUsername)
+				&& Objects.equals(returnDate, other.returnDate) && Objects.equals(book, other.book);
+
+	}
 
 }
