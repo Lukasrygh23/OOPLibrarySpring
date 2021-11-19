@@ -78,6 +78,16 @@ public class SeleniumTesting {
 			driver.get("http://127.0.0.1:5500/updateLicense.html");	
 		}
 		
+		@Test
+		public void testGetAllBooks() {
+			driver.get("http://localhost:9000/book/getAll");
+		}
+		
+		@Test
+		public void testGetAllLicenses() {
+			driver.get("http://localhost:9000/license/getAll");
+		}
+		
 		
 		
 		
