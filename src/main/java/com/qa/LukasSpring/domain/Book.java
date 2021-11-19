@@ -1,5 +1,7 @@
 package com.qa.LukasSpring.domain;
 
+import java.util.Objects;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -71,14 +73,8 @@ public class Book {
 	
 	@Override
 	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((bookId == null) ? 0 : bookId.hashCode());
-		result = prime * result + ((bookName == null) ? 0 : bookName.hashCode());
-		result = prime * result + ((authorName == null) ? 0 : authorName.hashCode());
-		
-		
-		return result;
+		return Objects.hash(bookId, bookName, authorName);
+
 	}
 	
 	@Override
