@@ -48,6 +48,7 @@ public class BookService {
 	
 	public boolean delete(Long id) {
 		
+		this.repo.deleteLicenseById(id);
 		this.repo.deleteById(id);
 		boolean exists = this.repo.existsById(id);
 		//This should return false if it doesn't exist, so we invert it.
