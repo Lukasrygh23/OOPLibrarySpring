@@ -28,6 +28,7 @@ public class LicenseServiceTest {
 	@Mock
 	private LicenseRepo repo;
 
+	@SuppressWarnings("deprecation")
 	@Test
 	public void createTest() {
 		Date testTime = new Date(120, 11, 20);
@@ -43,6 +44,7 @@ public class LicenseServiceTest {
 		
 	}
 	
+	@SuppressWarnings("deprecation")
 	@Test
 	public void getAllTest() {
 		List<tLicense> output = new ArrayList<>();
@@ -58,6 +60,7 @@ public class LicenseServiceTest {
 				
 	}
 	
+	@SuppressWarnings("deprecation")
 	@Test
 	public void getOneTest() {
 		Long testId = 1L;
@@ -73,6 +76,7 @@ public class LicenseServiceTest {
 		Mockito.verify(this.repo, Mockito.times(1)).findById(testId);
 	}
 	
+	@SuppressWarnings("deprecation")
 	@Test
 	public void testUpdate() {
 		Long inputId = 1L;
